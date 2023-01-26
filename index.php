@@ -350,10 +350,10 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active ps-0" id="home-tab" href="index.php"   aria-selected="true">Input Data</a>
+                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Input Data</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="preprocess-tab" href="preprop.php" role="tab">Preprocessing</a>
+                      <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Preprocessing</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="trainingtab.php">Training</a>
@@ -415,7 +415,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
+                      <?php
                         $per_page = 10;
                         $query = "SELECT COUNT(*) FROM trkalimat";
                         $result = mysqli_query($conn, $query);
@@ -462,28 +462,6 @@
                             echo "</nav>";
                             echo "</div>";
                         ?>
-                        <!-- <tr>
-                          <td class="py-1">
-                            1
-                          </td>
-                          <td class="text-wrap">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel sed nostrum fugit maiores qui repellat temporibus similique rem aliquam odio quasi modi aperiam corrupti quos, in ipsam harum veritatis mollitia!
-                          </td>
-                          <td>
-                          <label class="badge badge-danger">Negatif</label>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            2
-                          </td>
-                          <td class="text-wrap">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatibus, quasi reiciendis consequatur eum et at sequi voluptas soluta earum inventore nulla itaque pariatur maiores. Consectetur quia dolore magni illo.
-                          </td>
-                          <td>
-                          <label class="badge badge-success">Positif</label>
-                          </td>
-                        </tr> -->
                       </tbody>
                     </table>
                   </div>
