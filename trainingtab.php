@@ -249,8 +249,8 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item">
-            <a class="nav-link" href="index.php">
+          <li class="nav-item active">
+            <a class="nav-link active" href="index.php">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Data Training</span>
             </a>
@@ -350,52 +350,24 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Input Data</a>
+                    <a class="nav-link active ps-0" id="home-tab" href="index.php"   aria-selected="true">Input Data</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Preprocessing</a>
-                    </li>
+                    <a class="nav-link" href="preprop.php">Preprocessing</a>
                     <li class="nav-item">
-                      <a class="nav-link" href="trainingtab.php">Training</a>
+                      <a class="nav-link active ps-0" id="training-tab" data-bs-toggle="tab" href="trainingtab.php" role="tab" aria-selected="true">Training</a>
                     </li>
                     <!-- <li class="nav-item">
                       <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
                     </li> -->
                   </ul>
                 </div>
-                <div class="tab-content tab-content-basic">
-                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
-                    <div class="row">
-                      <div class="col-lg-8 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                          <div class="card">
-                            <div class="card-body">
-                            <h4 class="card-title">Upload File csv</h4>
-                              <form class="forms-sample" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="csvform" enctype="multipart/form-data">
-                                <div class="form-group">
-                                  <label>File upload</label>
-                                  <div class="mb-3">
-                                    <input class="form-control" type="file" name="file">
-                                  </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary me-2" value="Upload">Submit</button>
-                                <button class="btn btn-light">Cancel</button>
-                              </form>
-                            </div>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="col-lg-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Kalimat-kalimat</h4>
+                  <h4 class="card-title">Result</h4>
                   <p class="card-description">
                     <!-- Add class <code>.table-striped</code> -->
                     <!-- ilham -->
@@ -405,36 +377,32 @@
                       <thead>
                         <tr>
                           <th>
-                            No
+                            Akurasi
                           </th>
                           <th>
-                            Kalimat
+                            recall
                           </th>
-                          <th>Label
+                          <th>
+                            Precision
+                          </th>
+                          <th>
+                            F-Measure
                           </th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td class="py-1">
-                            1
+                          <td >
+                            
                           </td>
                           <td class="text-wrap">
-                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel sed nostrum fugit maiores qui repellat temporibus similique rem aliquam odio quasi modi aperiam corrupti quos, in ipsam harum veritatis mollitia!
-                          </td>
-                          <td>
-                          <label class="badge badge-danger">Negatif</label>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="py-1">
-                            2
+
                           </td>
                           <td class="text-wrap">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatibus, quasi reiciendis consequatur eum et at sequi voluptas soluta earum inventore nulla itaque pariatur maiores. Consectetur quia dolore magni illo.
+
                           </td>
                           <td>
-                          <label class="badge badge-success">Positif</label>
+
                           </td>
                         </tr>
                       </tbody>
