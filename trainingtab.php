@@ -255,6 +255,12 @@
               <span class="menu-title">Data Training</span>
             </a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="menuDataTesting.php">
+              <i class="mdi mdi-grid-large menu-icon"></i>
+              <span class="menu-title">Data Testing</span>
+            </a>
+          </li>
           <li class="nav-item nav-category">UI Elements</li>
           <li class="nav-item">
             <a class="nav-link" data-bs-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
