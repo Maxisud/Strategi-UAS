@@ -249,13 +249,13 @@
       <!-- partial:partials/_sidebar.html -->
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
-          <li class="nav-item active">
+          <li class="nav-item">
             <a class="nav-link" href="index.php">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Data Training</span>
             </a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item active">
             <a class="nav-link" href="menuDataTesting.php">
               <i class="mdi mdi-grid-large menu-icon"></i>
               <span class="menu-title">Data Testing</span>
@@ -351,126 +351,20 @@
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="row">
-            <div class="col-sm-12">
-              <div class="home-tab">
-                <div class="d-sm-flex align-items-center justify-content-between border-bottom">
-                  <ul class="nav nav-tabs" role="tablist">
-                    <li class="nav-item">
-                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Input Data</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="preprop.php">Preprocessing</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="trainingtab.php">Training</a>
-                    </li>
-                    <!-- <li class="nav-item">
-                      <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
-                    </li> -->
-                  </ul>
-                </div>
-                <div class="tab-content tab-content-basic">
-                  <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview"> 
-                    <div class="row">
-                      <div class="col-lg-8 d-flex flex-column">
-                        <div class="row flex-grow">
-                          <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
-                          <div class="card">
-                            <div class="card-body">
-                            <h4 class="card-title">Upload File csv</h4>
-                              <form class="forms-sample" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="csvform" enctype="multipart/form-data">
-                                <div class="form-group">
-                                  <label>File upload</label>
-                                  <div class="mb-3">
-                                    <input class="form-control" type="file" name="file">
-                                  </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary me-2" value="Upload">Submit</button>
-                                <button class="btn btn-light">Cancel</button>
-                              </form>
-                            </div>
-                          </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-lg-12 grid-margin stretch-card">
+          <div class="col-12 grid-margin stretch-card">
               <div class="card">
                 <div class="card-body">
-                  <h4 class="card-title">Kalimat-kalimat</h4>
-                  <p class="card-description">
-                    <!-- Add class <code>.table-striped</code> -->
-                    <!-- ilham -->
-                  </p>
-                  <div class="table-responsive">
-                    <table class="table table-striped">
-                      <thead>
-                        <tr>
-                          <th>
-                            No
-                          </th>
-                          <th>
-                            Kalimat
-                          </th>
-                          <th>Label
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                      <?php
-                        $per_page = 10;
-                        $query = "SELECT COUNT(*) FROM trkalimat";
-                        $result = mysqli_query($conn, $query);
-                        $row = mysqli_fetch_row($result);
-                        $total_rows = $row[0];
-                        $total_pages = ceil($total_rows / $per_page);
-                        
-                        $current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
-                        
-                        $start = ($current_page - 1) * $per_page;
-                        $query = "SELECT * FROM trkalimat LIMIT $start, $per_page";
-                        $result = mysqli_query($conn, $query);
-                        
-                        $i = $start + 1;
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td class='py-1'>" . $i . "</td>";
-                            echo "<td class='text-wrap'>" . $row["kalimat"] . "</td>";
-                            if ($row["label"] == 'Positif') {
-                                echo "<td><label class='badge badge-success'>" . $row["label"] . "</label></td>";
-                            } else {
-                                echo "<td><label class='badge badge-danger'>" . $row["label"] . "</label></td>";
-                                "</tr>";
-                                $i++;
-                            }
-                        }
-                            echo "</tbody>";
-                            echo "</table>";
-                            
-                            // display pagination links
-                            echo "<div class='pagination-container'>";
-                            echo "<nav>";
-                            echo "<ul class='pagination'>";
-                            
-                            for ($i = 1; $i <= $total_pages; $i++) {
-                            if ($i == $current_page) {
-                                echo "<li class='page-item active'><a class='page-link' href='?page=$i'>$i</a></li>";
-                            } else {
-                                echo "<li class='page-item'><a class='page-link' href='?page=$i'>$i</a></li>";
-                              }
-                            }
-                            
-                            echo "</ul>";
-                            echo "</nav>";
-                            echo "</div>";
-                        ?>
-                      </tbody>
-                    </table>
-                  </div>
+                  <h4 class="card-title">Tentukan kalimat positif atau negatif!</h4>
+                  <form class="forms-sample">
+                    <div class="form-group">
+                      <label for="exampleInputName1">Masukkan kalimat</label>
+                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Masukkan kalimat">
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button class="btn btn-light">Cancel</button>
+                  </form>
+                  <p>Kalimat anda adalah Positif</p>
+                  <p>kalimat anda adalah negatif</p>
                 </div>
               </div>
             </div>
