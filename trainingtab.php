@@ -350,7 +350,7 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                    <a class="nav-link active ps-0" id="home-tab" href="index.php"   aria-selected="true">Input Data</a>
+                    <a class="nav-link" id="home-tab" href="index.php"   aria-selected="true">Input Data</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link" href="preprop.php">Preprocessing</a>
@@ -406,6 +406,7 @@
                           </td>
                         </tr>
                       </tbody>
+                      <button type="submit" class="btn btn-primary " value="btn-training">Hitung!</button>
                     </table>
                   </div>
                 </div>
