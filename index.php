@@ -36,7 +36,6 @@
             mysqli_query($conn, $query);
         }
         // Close the database connection
-        mysqli_close($conn);
       } else {
           echo "Error: " . $file["error"];
       }
