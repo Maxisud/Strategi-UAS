@@ -8,16 +8,16 @@ import sys
 #memuat model
 model = joblib.load("model.ict")
 cv = joblib.load('cv.ict')
-
+text = " "
 for arg in sys.argv:
     text = text + " " + arg
 
 temp = cv.transform([text])
 temp = temp.toarray()
 res = model.predict(temp)
-if(res=="positif"):
-    hasil = "positif"
+if(res=="positive"):
+    hasil = "Kalimat anda adalah positif"
 else:
-    hasil = "negatif"
+    hasil = "Kalimat anda adalah negatif"
 
-print(hasil)
+print(str(hasil))

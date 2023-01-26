@@ -25,22 +25,7 @@
 
   <?php
   include 'API/koneksi.php';
-  if (isset($_FILES["file"])) {
-      $file = $_FILES["file"];
-      if ($file["error"] === UPLOAD_ERR_OK) {
-          $filePath = $file["tmp_name"];
-          $fileopen = fopen($filePath, "r");
-          while (($data = fgetcsv($fileopen, 1000, ",")) !== FALSE) {
-            // Insert the data into the database
-            $query = "INSERT INTO trkalimat (kalimat, label) VALUES ('$data[2]', '$data[1]')";
-            mysqli_query($conn, $query);
-        }
-        // Close the database connection
-        mysqli_close($conn);
-      } else {
-          echo "Error: " . $file["error"];
-      }
-  }
+  
 
   ?>
 </head>
@@ -271,16 +256,24 @@
               <div class="card">
                 <div class="card-body">
                   <h4 class="card-title">Tentukan kalimat positif atau negatif!</h4>
-                  <form class="forms-sample">
+                  <form action="" method="post">
                     <div class="form-group">
                       <label for="exampleInputName1">Masukkan kalimat</label>
-                      <input type="text" class="form-control" id="exampleInputName1" placeholder="Masukkan kalimat">
+                      <input type="text" class="form-control" id="text" placeholder="Masukkan kalimat" name="text">
                     </div>
-                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <button type="submit" class="btn btn-primary me-2" name="submit">Submit</button>
                     <button class="btn btn-light">Cancel</button>
                   </form>
-                  <p>Kalimat anda adalah Positif</p>
-                  <p>kalimat anda adalah negatif</p>
+                  <?php
+                    if(isset($_POST['submit']))
+                    {
+                        $text = $_POST['text'];
+                        $test = exec("python API/testing.py $text", $output);
+                        foreach ($output as $out) {
+                        echo $out;
+                      }
+                    }
+                  ?>
                 </div>
               </div>
             </div>
