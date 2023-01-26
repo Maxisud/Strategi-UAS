@@ -45,13 +45,13 @@ predicted = knn.predict(x_test.toarray())
 akurasi = metrics.accuracy_score(predicted, y_test)
 print(str(akurasi))
 
-Recall = metrics.recall_score(predicted, y_test)
+Recall = metrics.recall_score(y_test, predicted, pos_label='positive')
 print(str(Recall))
 
-Presicion = metrics.precision_score(predicted, y_test)
+Presicion = metrics.precision_score(y_test, predicted, pos_label='positive')
 print(str(Presicion))
 
-f_measure = metrics.f1_score(y_test, predicted)
+f_measure = metrics.f1_score(y_test, predicted, pos_label='positive')
 print(str(f_measure))
 
 #menyimpan model

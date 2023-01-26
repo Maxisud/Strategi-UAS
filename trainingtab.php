@@ -25,23 +25,6 @@
 
   <?php
   include 'API/koneksi.php';
-  if (isset($_FILES["file"])) {
-      $file = $_FILES["file"];
-      if ($file["error"] === UPLOAD_ERR_OK) {
-          $filePath = $file["tmp_name"];
-          $fileopen = fopen($filePath, "r");
-          while (($data = fgetcsv($fileopen, 1000, ",")) !== FALSE) {
-            // Insert the data into the database
-            $query = "INSERT INTO trkalimat (kalimat, label) VALUES ('$data[2]', '$data[1]')";
-            mysqli_query($conn, $query);
-        }
-        // Close the database connection
-        mysqli_close($conn);
-      } else {
-          echo "Error: " . $file["error"];
-      }
-  }
-
   ?>
 </head>
 <body>
@@ -374,6 +357,9 @@
                   </p>
                   <div class="table-responsive">
                     <table class="table table-striped">
+                    <form action="" method="post">
+                        <button type="submit" class="btn btn-primary " value="training">Hitung!</button>
+                      </form>
                       <thead>
                         <tr>
                           <th>
@@ -391,22 +377,16 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
-                          <td >
-                            
-                          </td>
-                          <td class="text-wrap">
-
-                          </td>
-                          <td class="text-wrap">
-
-                          </td>
-                          <td>
-
-                          </td>
-                        </tr>
+                        <?php
+                          if(isset($_POST['Training']))
+                          {
+                              $test = exec("python API/training.py", $output);
+                              for($i = 0;$i<4;$i++){
+                              echo '<td>' . $output[$i] . '</td>';
+                              }
+                          }
+                          ?>
                       </tbody>
-                      <button type="submit" class="btn btn-primary " value="btn-training">Hitung!</button>
                     </table>
                   </div>
                 </div>
