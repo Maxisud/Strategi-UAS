@@ -390,6 +390,7 @@
                   <h4 class="card-title">Kalimat-kalimat</h4>
                   <p class="card-description">
                     <!-- Add class <code>.table-striped</code> -->
+                    <!-- tes -->
                   </p>
                   <div class="table-responsive">
                     <table class="table table-striped">
