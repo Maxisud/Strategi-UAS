@@ -353,7 +353,7 @@
                       <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Input Data</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Preprocessing</a>
+                      <a class="nav-link" href="preprop.php">Preprocessing</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" href="trainingtab.php">Training</a>

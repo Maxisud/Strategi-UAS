@@ -350,10 +350,10 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                    <a class="nav-link active ps-0" id="home-tab" href="index.php"   aria-selected="true">Input Data</a>
+                    <a class="nav-link" id="home-tab" href="index.php"   aria-selected="true">Input Data</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link" href="preprop.php">Preprocessing</a>
+                      <a class="nav-link" href="preprop.php">Preprocessing</a>
                     <li class="nav-item">
                       <a class="nav-link active ps-0" id="training-tab" data-bs-toggle="tab" href="trainingtab.php" role="tab" aria-selected="true">Training</a>
                     </li>
