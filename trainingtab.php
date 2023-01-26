@@ -357,8 +357,8 @@
                   </p>
                   <div class="table-responsive">
                     <table class="table table-striped">
-                    <form action="" method="post">
-                        <button type="submit" class="btn btn-primary " value="training">Hitung!</button>
+                    <form action="" method="POST">
+                        <button type="submit" class="btn btn-primary " value="training" name="training">Hitung!</button>
                       </form>
                       <thead>
                         <tr>
@@ -378,7 +378,7 @@
                       </thead>
                       <tbody>
                         <?php
-                          if(isset($_POST['Training']))
+                          if(isset($_POST['training']))
                           {
                               $test = exec("python API/training.py", $output);
                               for($i = 0;$i<4;$i++){
