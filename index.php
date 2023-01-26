@@ -24,16 +24,24 @@
   <link rel="shortcut icon" href="images/favicon.png" />
 
   <?php
-    if (isset($_FILES["file"])) {
-        $file = $_FILES["file"];
-        if ($file["error"] === UPLOAD_ERR_OK) {
-            $filePath = $file["tmp_name"];
-            $output = passthru("python inputdata.py '$filePath'");
-            echo($output);
-        } else {
-            echo "Error: " . $file["error"];
+  include 'API/koneksi.php';
+  if (isset($_FILES["file"])) {
+      $file = $_FILES["file"];
+      if ($file["error"] === UPLOAD_ERR_OK) {
+          $filePath = $file["tmp_name"];
+          $fileopen = fopen($filePath, "r");
+          while (($data = fgetcsv($fileopen, 1000, ",")) !== FALSE) {
+            // Insert the data into the database
+            $query = "INSERT INTO trkalimat (kalimat, label) VALUES ('$data[2]', '$data[1]')";
+            mysqli_query($conn, $query);
         }
-    }
+        // Close the database connection
+        mysqli_close($conn);
+      } else {
+          echo "Error: " . $file["error"];
+      }
+  }
+
   ?>
 </head>
 <body>
