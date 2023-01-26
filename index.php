@@ -415,7 +415,54 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <tr>
+                        <?php
+                        $per_page = 10;
+                        $query = "SELECT COUNT(*) FROM trkalimat";
+                        $result = mysqli_query($conn, $query);
+                        $row = mysqli_fetch_row($result);
+                        $total_rows = $row[0];
+                        $total_pages = ceil($total_rows / $per_page);
+                        
+                        $current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
+                        
+                        $start = ($current_page - 1) * $per_page;
+                        $query = "SELECT * FROM trkalimat LIMIT $start, $per_page";
+                        $result = mysqli_query($conn, $query);
+                        
+                        $i = $start + 1;
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo "<tr>";
+                            echo "<td class='py-1'>" . $i . "</td>";
+                            echo "<td class='text-wrap'>" . $row["kalimat"] . "</td>";
+                            if ($row["label"] == 'Positif') {
+                                echo "<td><label class='badge badge-success'>" . $row["label"] . "</label></td>";
+                            } else {
+                                echo "<td><label class='badge badge-danger'>" . $row["label"] . "</label></td>";
+                                "</tr>";
+                                $i++;
+                            }
+                        }
+                            echo "</tbody>";
+                            echo "</table>";
+                            
+                            // display pagination links
+                            echo "<div class='pagination-container'>";
+                            echo "<nav>";
+                            echo "<ul class='pagination'>";
+                            
+                            for ($i = 1; $i <= $total_pages; $i++) {
+                            if ($i == $current_page) {
+                                echo "<li class='page-item active'><a class='page-link' href='?page=$i'>$i</a></li>";
+                            } else {
+                                echo "<li class='page-item'><a class='page-link' href='?page=$i'>$i</a></li>";
+                              }
+                            }
+                            
+                            echo "</ul>";
+                            echo "</nav>";
+                            echo "</div>";
+                        ?>
+                        <!-- <tr>
                           <td class="py-1">
                             1
                           </td>
@@ -436,7 +483,7 @@
                           <td>
                           <label class="badge badge-success">Positif</label>
                           </td>
-                        </tr>
+                        </tr> -->
                       </tbody>
                     </table>
                   </div>
