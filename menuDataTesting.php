@@ -355,7 +355,7 @@
                         $test = exec("python API/testing.py $text", $output);
                         foreach ($output as $out) {
                         echo $out;
-                      }
+                      } 
                     }
                   ?>
                 </div>
