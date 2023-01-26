@@ -406,6 +406,7 @@
                           </td>
                         </tr>
                       </tbody>
+                      <button type="submit" class="btn btn-primary " value="btn-training">Hitung!</button>
                     </table>
                   </div>
                 </div>
