@@ -350,10 +350,10 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active ps-0" id="home-tab" href="index.php"   aria-selected="true">Input Data</a>
+                      <a class="nav-link active ps-0" id="home-tab" data-bs-toggle="tab" href="#overview" role="tab" aria-controls="overview" aria-selected="true">Input Data</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="preprocess-tab" href="preprop.php" role="tab">Preprocessing</a>
+                      <a class="nav-link" id="profile-tab" data-bs-toggle="tab" href="#audiences" role="tab" aria-selected="false">Preprocessing</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false">Training</a>
@@ -415,54 +415,7 @@
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                        $per_page = 10;
-                        $query = "SELECT COUNT(*) FROM trkalimat";
-                        $result = mysqli_query($conn, $query);
-                        $row = mysqli_fetch_row($result);
-                        $total_rows = $row[0];
-                        $total_pages = ceil($total_rows / $per_page);
-                        
-                        $current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
-                        
-                        $start = ($current_page - 1) * $per_page;
-                        $query = "SELECT * FROM trkalimat LIMIT $start, $per_page";
-                        $result = mysqli_query($conn, $query);
-                        
-                        $i = $start + 1;
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td class='py-1'>" . $i . "</td>";
-                            echo "<td class='text-wrap'>" . $row["kalimat"] . "</td>";
-                            if ($row["label"] == 'Positif') {
-                                echo "<td><label class='badge badge-success'>" . $row["label"] . "</label></td>";
-                            } else {
-                                echo "<td><label class='badge badge-danger'>" . $row["label"] . "</label></td>";
-                                "</tr>";
-                                $i++;
-                            }
-                        }
-                            echo "</tbody>";
-                            echo "</table>";
-                            
-                            // display pagination links
-                            echo "<div class='pagination-container'>";
-                            echo "<nav>";
-                            echo "<ul class='pagination'>";
-                            
-                            for ($i = 1; $i <= $total_pages; $i++) {
-                            if ($i == $current_page) {
-                                echo "<li class='page-item active'><a class='page-link' href='?page=$i'>$i</a></li>";
-                            } else {
-                                echo "<li class='page-item'><a class='page-link' href='?page=$i'>$i</a></li>";
-                              }
-                            }
-                            
-                            echo "</ul>";
-                            echo "</nav>";
-                            echo "</div>";
-                        ?>
-                        <!-- <tr>
+                        <tr>
                           <td class="py-1">
                             1
                           </td>
@@ -483,7 +436,7 @@
                           <td>
                           <label class="badge badge-success">Positif</label>
                           </td>
-                        </tr> -->
+                        </tr>
                       </tbody>
                     </table>
                   </div>
