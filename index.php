@@ -252,7 +252,7 @@
           <li class="nav-item">
             <a class="nav-link" href="index.php">
               <i class="mdi mdi-grid-large menu-icon"></i>
-              <span class="menu-title">Dashboard</span>
+              <span class="menu-title">Data Training</span>
             </a>
           </li>
           <li class="nav-item nav-category">UI Elements</li>
@@ -356,7 +356,7 @@
                       <a class="nav-link" id="preprocess-tab" href="preprop.php" role="tab">Preprocessing</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false">Training</a>
+                      <a class="nav-link" href="trainingtab.php">Training</a>
                     </li>
                     <!-- <li class="nav-item">
                       <a class="nav-link border-0" id="more-tab" data-bs-toggle="tab" href="#more" role="tab" aria-selected="false">More</a>
