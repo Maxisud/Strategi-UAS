@@ -350,10 +350,10 @@
                 <div class="d-sm-flex align-items-center justify-content-between border-bottom">
                   <ul class="nav nav-tabs" role="tablist">
                     <li class="nav-item">
-                      <a class="nav-link active ps-0" id="home-tab" href="index.php"   aria-selected="true">Input Data</a>
+                    <a class="nav-link" href="index.php">Input Data</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" id="preprocess-tab" href="preprop.php" role="tab">Preprocessing</a>
+                      <a class="nav-link active ps-0" id="preprocess-tab" data-bs-toggle="tab" href="preprop.php" aria-controls="overview" role="tab" aria-selected="true">Preprocessing</a>
                     </li>
                     <li class="nav-item">
                       <a class="nav-link" id="contact-tab" data-bs-toggle="tab" href="#demographics" role="tab" aria-selected="false">Training</a>
@@ -371,15 +371,10 @@
                           <div class="col-12 col-lg-4 col-lg-12 grid-margin stretch-card">
                           <div class="card">
                             <div class="card-body">
-                            <h4 class="card-title">Upload File csv</h4>
+                            <h4 class="card-title">Preprocess csv</h4>
                               <form class="forms-sample" method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" name="csvform" enctype="multipart/form-data">
                                 <div class="form-group">
-                                  <label>File upload</label>
-                                  <div class="mb-3">
-                                    <input class="form-control" type="file" name="file">
-                                  </div>
-                                </div>
-                                <button type="submit" class="btn btn-primary me-2" value="Upload">Submit</button>
+                                <button type="submit" class="btn btn-primary " value="btn-preprocess">preprocess</button>
                                 <button class="btn btn-light">Cancel</button>
                               </form>
                             </div>
@@ -408,63 +403,23 @@
                             No
                           </th>
                           <th>
-                            Kalimat
+                            Kalimat awal
                           </th>
-                          <th>Label
+                          <th>
+                            kalimat akhir
+                          </th>
+                          <th>
+                            Label
                           </th>
                         </tr>
                       </thead>
                       <tbody>
-                        <?php
-                        $per_page = 10;
-                        $query = "SELECT COUNT(*) FROM trkalimat";
-                        $result = mysqli_query($conn, $query);
-                        $row = mysqli_fetch_row($result);
-                        $total_rows = $row[0];
-                        $total_pages = ceil($total_rows / $per_page);
-                        
-                        $current_page = (isset($_GET['page'])) ? (int) $_GET['page'] : 1;
-                        
-                        $start = ($current_page - 1) * $per_page;
-                        $query = "SELECT * FROM trkalimat LIMIT $start, $per_page";
-                        $result = mysqli_query($conn, $query);
-                        
-                        $i = $start + 1;
-                        while ($row = mysqli_fetch_assoc($result)) {
-                            echo "<tr>";
-                            echo "<td class='py-1'>" . $i . "</td>";
-                            echo "<td class='text-wrap'>" . $row["kalimat"] . "</td>";
-                            if ($row["label"] == 'Positif') {
-                                echo "<td><label class='badge badge-success'>" . $row["label"] . "</label></td>";
-                            } else {
-                                echo "<td><label class='badge badge-danger'>" . $row["label"] . "</label></td>";
-                                "</tr>";
-                                $i++;
-                            }
-                        }
-                            echo "</tbody>";
-                            echo "</table>";
-                            
-                            // display pagination links
-                            echo "<div class='pagination-container'>";
-                            echo "<nav>";
-                            echo "<ul class='pagination'>";
-                            
-                            for ($i = 1; $i <= $total_pages; $i++) {
-                            if ($i == $current_page) {
-                                echo "<li class='page-item active'><a class='page-link' href='?page=$i'>$i</a></li>";
-                            } else {
-                                echo "<li class='page-item'><a class='page-link' href='?page=$i'>$i</a></li>";
-                              }
-                            }
-                            
-                            echo "</ul>";
-                            echo "</nav>";
-                            echo "</div>";
-                        ?>
-                        <!-- <tr>
+                        <tr>
                           <td class="py-1">
                             1
+                          </td>
+                          <td class="text-wrap">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel sed nostrum fugit maiores qui repellat temporibus similique rem aliquam odio quasi modi aperiam corrupti quos, in ipsam harum veritatis mollitia!
                           </td>
                           <td class="text-wrap">
                             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel sed nostrum fugit maiores qui repellat temporibus similique rem aliquam odio quasi modi aperiam corrupti quos, in ipsam harum veritatis mollitia!
@@ -480,10 +435,13 @@
                           <td class="text-wrap">
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellat voluptatibus, quasi reiciendis consequatur eum et at sequi voluptas soluta earum inventore nulla itaque pariatur maiores. Consectetur quia dolore magni illo.
                           </td>
+                          <td class="text-wrap">
+                            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Vel sed nostrum fugit maiores qui repellat temporibus similique rem aliquam odio quasi modi aperiam corrupti quos, in ipsam harum veritatis mollitia!
+                          </td>
                           <td>
                           <label class="badge badge-success">Positif</label>
                           </td>
-                        </tr> -->
+                        </tr>
                       </tbody>
                     </table>
                   </div>
